@@ -1,12 +1,215 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NZ Gravel & E-Bike Tracker</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 20px;
+      background: #f9f9f9;
+      display: flex;
+      flex-direction: row;
+      gap: 20px;
+    }
+    .sidebar {
+      width: 250px;
+      padding: 10px;
+      background: #fff;
+      border: 1px solid #ddd;
+    }
+    .main-content {
+      flex-grow: 1;
+    }
+    h1 {
+      font-size: 1.8em;
+      margin-bottom: 0.2em;
+    }
+    .timestamp {
+      font-size: 0.9em;
+      color: #555;
+      margin-bottom: 1em;
+    }
+    form.filters label {
+      display: block;
+      margin-bottom: 6px;
+    }
+    form.filters .group {
+      margin-bottom: 12px;
+      border-bottom: 1px solid black;
+      padding-bottom: 8px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+    }
+    th, td {
+      padding: 8px;
+      border: 1px solid #ddd;
+      text-align: left;
+    }
+    th {
+      background-color: #eee;
+    }
+    tr:nth-child(even) {
+      background-color: #f4f4f4;
+    }
+    a {
+      color: #0077cc;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
 </head>
 <body>
-  <h1>NZ Gravel Bike Price Tracker</h1>
-  <p>Sample static site content goes here. Full filters and styling were previously included.</p>
+  <div class="sidebar">
+    <form class="filters">
+      <div class="group">
+        <strong>Sources:</strong><br>
+        <label><input type="checkbox" class="retailer-filter" value="Evo Cycles"> Evo Cycles</label>
+        <label><input type="checkbox" class="retailer-filter" value="Torpedo7"> Torpedo7</label>
+        <label><input type="checkbox" class="retailer-filter" value="Pushbikes"> Pushbikes</label>
+        <label><input type="checkbox" class="retailer-filter" value="Scotty Browns"> Scotty Browns</label>
+        <label><input type="checkbox" class="retailer-filter" value="Rouleur Cycles"> Rouleur Cycles</label>
+        <label><input type="checkbox" class="retailer-filter" value="Action Bicycle Club"> Action Bicycle Club</label>
+      </div>
+
+      <div class="group">
+        <strong>Purpose:</strong><br>
+        <label><input type="checkbox" value="commuter"> Commuter</label>
+        <label><input type="checkbox" value="touring"> Touring</label>
+        <label><input type="checkbox" value="gravel-race"> Gravel Race</label>
+        <label><input type="checkbox" value="bikepacking"> Bikepacking</label>
+      </div>
+
+      <div class="group">
+        <label><input type="checkbox" id="nationwide-toggle"> Only show bikes that ship nationwide</label>
+      </div>
+
+      <div class="group">
+        <strong>Brand:</strong><br>
+        <label><input type="checkbox" value="giant"> Giant</label>
+        <label><input type="checkbox" value="trek"> Trek</label>
+        <label><input type="checkbox" value="scott"> Scott</label>
+        <label><input type="checkbox" value="cervelo"> Cervelo</label>
+        <label><input type="checkbox" value="kona"> Kona</label>
+      </div>
+
+      <div class="group">
+        <strong>Price Band:</strong><br>
+        <label><input type="checkbox" value="under-3000"> Under $3,000</label>
+        <label><input type="checkbox" value="3000-4500"> $3,000–$4,500</label>
+        <label><input type="checkbox" value="4500+"> $4,500+</label>
+      </div>
+
+      <div class="group">
+        <strong>Available Sizes:</strong><br>
+        <label><input type="checkbox" value="XS"> XS</label>
+        <label><input type="checkbox" value="S"> S</label>
+        <label><input type="checkbox" value="M"> M</label>
+        <label><input type="checkbox" value="L"> L</label>
+        <label><input type="checkbox" value="XL"> XL</label>
+      </div>
+
+      <div class="group">
+        <strong>Motor Torque (Nm):</strong><br>
+        <label><input type="checkbox" value="55"> 55Nm</label>
+        <label><input type="checkbox" value="65"> 65Nm</label>
+        <label><input type="checkbox" value="85"> 85Nm</label>
+      </div>
+
+      <div class="group">
+        <strong>Battery Capacity (Wh):</strong><br>
+        <label><input type="checkbox" value="400"> 400Wh</label>
+        <label><input type="checkbox" value="500"> 500Wh</label>
+        <label><input type="checkbox" value="750"> 750Wh</label>
+      </div>
+
+      <div class="group">
+        <strong>Frame Material:</strong><br>
+        <label><input type="checkbox" value="carbon"> Carbon</label>
+        <label><input type="checkbox" value="alloy"> Alloy</label>
+        <label><input type="checkbox" value="steel"> Steel</label>
+        <label><input type="checkbox" value="titanium"> Titanium</label>
+      </div>
+
+      <div class="group">
+        <strong>Bike Type:</strong><br>
+        <label><input type="checkbox" value="electric"> Electric</label>
+        <label><input type="checkbox" value="non-electric"> Non-electric</label>
+      </div>
+    </form>
+  </div>
+
+  <div class="main-content">
+    <h1>NZ Gravel Bike Price Tracker</h1>
+    <div class="timestamp">Last updated: 25 May 2025</div>
+
+    <table id="bike-table">
+      <thead>
+        <tr>
+          <th>Brand</th>
+          <th>Model</th>
+          <th>Price</th>
+          <th>Sizes</th>
+          <th>Stock</th>
+          <th>Retailer</th>
+          <th>Link</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Giant</td>
+          <td>Revolt Advanced 2</td>
+          <td>$4,499</td>
+          <td>S, M</td>
+          <td>M only</td>
+          <td>Evo Cycles</td>
+          <td><a href="https://www.evocycles.co.nz" target="_blank">View</a></td>
+        </tr>
+        <tr>
+          <td>Trek</td>
+          <td>Checkpoint ALR 5</td>
+          <td>$3,999</td>
+          <td>XS, S, M</td>
+          <td>In stock</td>
+          <td>Torpedo7</td>
+          <td><a href="https://www.torpedo7.co.nz" target="_blank">View</a></td>
+        </tr>
+        <tr>
+          <td>Scott</td>
+          <td>Addict Gravel 30</td>
+          <td>$5,299</td>
+          <td>M, L</td>
+          <td>M only</td>
+          <td>Scotty Browns</td>
+          <td><a href="https://scottybrowns.com" target="_blank">View</a></td>
+        </tr>
+        <tr>
+          <td>Cervelo</td>
+          <td>Aspero GRX RX600</td>
+          <td>$5,999</td>
+          <td>M, L</td>
+          <td>In stock</td>
+          <td>Rouleur Cycles</td>
+          <td><a href="https://rouleurcycles.co.nz" target="_blank">View</a></td>
+        </tr>
+        <tr>
+          <td>Kona</td>
+          <td>Libre CR DL</td>
+          <td>$4,799</td>
+          <td>S, M</td>
+          <td>S only</td>
+          <td>Action Bicycle Club</td>
+          <td><a href="https://www.actionbicycleclub.com" target="_blank">View</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </body>
 </html>
