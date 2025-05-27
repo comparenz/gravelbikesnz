@@ -1,0 +1,27 @@
+[
+  {
+    "brand": "Giant",
+    "model": "Revolt Advanced 2",
+    "price": 4499,
+    "sizes": [
+      "S",
+      "M"
+    ],
+    "stock": "In stock",
+    "retailer": "Evo Cycles",
+    "url": "https://www.evocycles.co.nz"
+  },
+  {
+    "brand": "Trek",
+    "model": "Checkpoint ALR 5",
+    "price": 3999,
+    "sizes": [
+      "XS",
+      "S",
+      "M"
+    ],
+    "stock": "In stock",
+    "retailer": "Torpedo7",
+    "url": "https://www.torpedo7.co.nz"
+  }
+]
