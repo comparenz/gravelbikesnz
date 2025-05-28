@@ -1,20 +1,17 @@
 [
   {
-    "brand": "Giant",
-    "model": "Revolt Advanced 2",
-    "price": "$4,499",
-    "sizes": "S, M",
-    "stock": "M only",
-    "retailer": "Evo Cycles",
-    "url": "https://www.evocycles.co.nz"
+    "error": "Failed to scrape Evo Cycles: HTTPSConnectionPool(host='www.evocycles.co.nz', port=443): Max retries exceeded with url: /category/308/gravel-bikes (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7ed8f7cd04e0>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution'))"
   },
   {
-    "brand": "Trek",
-    "model": "Checkpoint ALR 5",
-    "price": "$3,999",
-    "sizes": "XS, S, M",
-    "stock": "In stock",
-    "retailer": "Torpedo7",
-    "url": "https://www.torpedo7.co.nz"
+    "error": "Failed to scrape Torpedo7: HTTPSConnectionPool(host='www.torpedo7.co.nz', port=443): Max retries exceeded with url: /shop/bike/bikes/gravel-bikes (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7ed8f7cceaa0>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution'))"
+  },
+  {
+    "error": "Failed to scrape 99 Bikes NZ: HTTPSConnectionPool(host='www.99bikes.co.nz', port=443): Max retries exceeded with url: /bikes/gravel-bikes (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7ed8f7cd4d60>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution'))"
+  },
+  {
+    "error": "Failed to scrape MyRide: HTTPSConnectionPool(host='www.myride.co.nz', port=443): Max retries exceeded with url: /shop/bikes/gravel (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7ed8f7d113e0>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution'))"
+  },
+  {
+    "error": "Failed to scrape Bike Barn: HTTPSConnectionPool(host='www.bikebarn.co.nz', port=443): Max retries exceeded with url: /bikes/road-bikes/gravel-bikes.html (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7ed8f7d55d20>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution'))"
   }
 ]
